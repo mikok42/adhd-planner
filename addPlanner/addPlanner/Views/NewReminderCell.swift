@@ -40,7 +40,9 @@ struct NewReminderCell: View {
             }
             
             TextField("What do you need to do?", text: $text)
+                .frame(height: 50)
                 .onSubmit { addReminder() }
+                
         }
         .frame(maxWidth: .infinity)
         .background(Color(.secondarySystemBackground))
@@ -58,8 +60,6 @@ struct NewReminderCell: View {
     func addReminder() {
         createSystemReminder()
         saveReminder()
-        text = ""
-        
     }
     
     func saveReminder() {
@@ -95,6 +95,7 @@ struct NewReminderCell: View {
                     reminder.alarms?.append(.init(absoluteDate: dueDate))
                     do {
                         try eventStore.save(reminder, commit: true)
+                        text = ""
                     } catch {
                         print("chuj dupa kamieni kupa")
                     }

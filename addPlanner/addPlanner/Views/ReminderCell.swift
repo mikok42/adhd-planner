@@ -11,10 +11,10 @@ struct ReminderCell: View {
     
     var body: some View {
         HStack {
-            Text(reminder.text)
+            Text(reminder.text ?? "empty")
                 .foregroundStyle(.primary)
             Spacer()
-            Text(getEmoji(type: reminder.type))
+            Text(getEmoji(type: reminder.type ?? .shortTerm))
                 .frame(width: 50)
         }
         .frame(maxWidth: .infinity, maxHeight: 100)

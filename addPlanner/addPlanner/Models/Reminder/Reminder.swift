@@ -11,7 +11,7 @@ import SwiftData
 @Model
 final class Reminder {
     var text: String
-    var type: ReminderType
+    var type: ReminderType?
     var id: UUID?
     
     init(type: ReminderType, text: String) {
